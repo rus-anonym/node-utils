@@ -1,8 +1,8 @@
 import UtilsLogical from "../logical";
 import NumberUtils from "../number";
 import UtilsArrayClone from "./lib/clone";
-import UtilsArraySort from "./lib/sort";
 import UtilsArrayNumber from "./lib/number";
+import UtilsArraySort from "./lib/sort";
 
 class UtilsArray {
     private readonly _number: NumberUtils;
@@ -147,8 +147,8 @@ class UtilsArray {
      * // Return ["test"]
      * array.removeFalseValues([0, NaN, false, null, undefined, "", "test"])
      */
-    public removeFalseValues<T>(array: T[]): T[] {
-        return array.filter(Boolean);
+    public removeFalseValues<T>(array: T[]): Exclude<T, 0 | false | null | undefined | "">[] {
+        return array.filter(Boolean) as Exclude<T, 0 | false | null | undefined | "">[];
     }
 
     /**
@@ -169,6 +169,6 @@ class UtilsArray {
     }
 }
 
-export { UtilsArrayClone, UtilsArraySort, UtilsArrayNumber };
+export { UtilsArrayClone, UtilsArrayNumber, UtilsArraySort };
 
 export default UtilsArray;
